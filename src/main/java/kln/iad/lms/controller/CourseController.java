@@ -23,18 +23,18 @@ public class CourseController {
     }
 
 
-    @PutMapping("update")
-    public ResponseEntity<Boolean> updateCourseCategory(@RequestBody UpdateCourseCategoryDto updateCourseCategoryInfo){
-        if(courseCategoryService.updateCourseCategory(updateCourseCategoryInfo)) {
-            return new ResponseEntity<>(true, HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
-    }
-
-    @PostMapping("delete")
-    public ResponseEntity<Boolean> removeCourseCategory(@RequestBody GetCourseCategoryDto categoryName) {
-        System.out.println("Hello");
-        System.out.println(categoryName.getCategoryName());
-        return new ResponseEntity<>(courseCategoryService.removeCourseCategory(categoryName), HttpStatus.ACCEPTED);
-    }
+//    @PutMapping("update")
+//    public ResponseEntity<Boolean> updateCourseCategory(@RequestBody UpdateCourseCategoryDto updateCourseCategoryInfo){
+//        if(courseCategoryService.updateCourseCategory(updateCourseCategoryInfo)) {
+//            return new ResponseEntity<>(true, HttpStatus.CREATED);
+//        }
+//        return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+//    }
+//
+//    @PostMapping("delete")
+//    public ResponseEntity<Boolean> removeCourseCategory(@RequestBody GetCourseCategoryDto categoryName) {
+//        System.out.println("Hello");
+//        System.out.println(categoryName.getCategoryName());
+//        return new ResponseEntity<>(courseCategoryService.removeCourseCategory(categoryName), HttpStatus.ACCEPTED);
+//    }
 }
