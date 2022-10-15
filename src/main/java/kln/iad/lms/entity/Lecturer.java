@@ -17,7 +17,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class Lecturer extends User {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private String id;
     private String name;
     private String email;
     private String password;

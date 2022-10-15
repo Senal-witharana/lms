@@ -19,6 +19,6 @@ import java.util.Date;
 public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long enrollmentId;
+    private String enrollmentId;
     private Date enrollmentDate;
 }

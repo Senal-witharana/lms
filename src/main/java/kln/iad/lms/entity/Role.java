@@ -1,9 +1,8 @@
 package kln.iad.lms.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,15 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-public class Student extends User {
+@NoArgsConstructor
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String name;
-    private String email;
-    private String password;
 }
