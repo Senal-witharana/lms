@@ -19,6 +19,8 @@ import java.util.Date;
 public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String enrollmentId;
-    private Date enrollmentDate;
+    private int studentId;
+    private String courseCode;
+    private String courseName;
+    private String courseDescription;
 }

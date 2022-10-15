@@ -7,12 +7,12 @@ import kln.iad.lms.entity.Course;
 
 public interface CourseService {
 
-    public Iterable<Course> getAllCourses();
+    Iterable<Course> getAllCourses();
 
-    public ResponseHeader saveCourse(CreateCourseDto createCourseDto);
+    ResponseHeader saveCourse(CreateCourseDto createCourseDto);
 
-    public ResponseHeader updateCourse(CreateCourseDto createCourseDto);
+    ResponseHeader updateCourse(CreateCourseDto createCourseDto);
 
-    public ResponseHeader deleteCourse(DeleteCourseDto deleteCourseDto);
+    ResponseHeader deleteCourse(DeleteCourseDto deleteCourseDto);
 
 }

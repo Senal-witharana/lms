@@ -1,7 +1,13 @@
 package kln.iad.lms.service;
 
-import kln.iad.lms.entity.Enrollment;
-import org.springframework.data.jpa.repository.JpaRepository;
+import kln.iad.lms.dto.CreateEnrollmentDto;
 
-public interface EnrollmentService extends JpaRepository<Enrollment, Long> {
+import java.util.List;
+
+public interface EnrollmentService {
+    CreateEnrollmentDto saveStudentEnrolledCourse(CreateEnrollmentDto createEnrollmentDto);
+
+    List<CreateEnrollmentDto> getEnrolledCourses();
+
+    boolean dropCourse(CreateEnrollmentDto createEnrollmentDto);
 }
