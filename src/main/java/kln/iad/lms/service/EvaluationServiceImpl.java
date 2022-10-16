@@ -45,7 +45,6 @@ public class EvaluationServiceImpl implements EvaluationService{
         CourseEvaluation evaluation = new CourseEvaluation();
         evaluation.setTeacher(lecturer.get());
         evaluation.setStudent(student.get());
-
         evaluation.setCourse(course.get());
 
 

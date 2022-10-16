@@ -33,14 +33,10 @@ public class EnrollmentController {
         return new ResponseEntity<>(enrollment, HttpStatus.ACCEPTED);
     }
 
-//    @PostMapping("")
-//    public ResponseEntity<Optional<Enrollment>> saveEnrollment(CreateEnrollmentDto enrollmentInfo) {
-//        Optional<Enrollment> savedEnrollment = enrollmentService.saveEnrollment(enrollmentInfo);
-//
-//        if(savedEnrollment.isEmpty()) {
-//            return new ResponseEntity<>(savedEnrollment, HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(savedEnrollment, HttpStatus.CREATED);
-//    }
+    @PostMapping("/saveEnrollment")
+    public ResponseEntity saveEnrollment(@RequestBody CreateEnrollmentDto enrollmentInfo) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(enrollmentService.saveEnrollment(enrollmentInfo));
+    }
 
 }

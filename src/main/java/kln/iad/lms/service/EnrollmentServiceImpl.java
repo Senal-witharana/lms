@@ -39,24 +39,20 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @Override
     public ResponseHeader saveEnrollment(CreateEnrollmentDto createEnrollmentDto) {
         ResponseHeader responseHeader = new ResponseHeader();
-//        String code;
-//        String description;
-//        if(courseRepo.existsById(createCourseDto.getCourseId())){
-//            code="01";
-//            description="Already Exist";
-//        }
-//
-//        else {
-//            Course course = new ModelMapper().map(createCourseDto, Course.class);
-//
-//            courseRepo.save(course);
-//            code="00";
-//            description="SUCCESS";
-//        }
-//
-//        responseHeader.setResponseCode(code);
-//        responseHeader.setResponseDesc(description);
-//
+        String code;
+        String description;
+
+            Enrollment enrollment = new ModelMapper().map(createEnrollmentDto, Enrollment.class);
+
+            enrollmentRepo.save(enrollment);
+
+        code="00";
+        description="Enrollment Success";
+
+
+        responseHeader.setResponseCode(code);
+        responseHeader.setResponseDesc(description);
+
         return responseHeader;
 
     }
