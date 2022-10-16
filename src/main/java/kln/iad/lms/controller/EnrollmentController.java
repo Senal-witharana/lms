@@ -1,6 +1,7 @@
 package kln.iad.lms.controller;
 
 import kln.iad.lms.dto.CreateEnrollmentDto;
+import kln.iad.lms.entity.Enrollment;
 import kln.iad.lms.service.EnrollmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,20 +18,29 @@ public class EnrollmentController {
     @Autowired
     private EnrollmentServiceImpl enrollmentService;
 
-    @PostMapping("/enrolCourse")
-    public CreateEnrollmentDto enrollCourse(@RequestBody CreateEnrollmentDto createEnrollmentDto){
-        System.out.println("Enrollment Success!");
-        return enrollmentService.saveStudentEnrolledCourse(createEnrollmentDto);
+    @GetMapping("/getEnrolledCourse")
+    public ResponseEntity<Iterable<Enrollment>> getAllEnrollments() {
+        return new ResponseEntity<>(enrollmentService.getAllEnrollments(), HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/registeredCourses")
-    public List<CreateEnrollmentDto> getRegisteredCourses() {
-        return enrollmentService.getEnrolledCourses();
+    @GetMapping("{enrollmentId}")
+    public ResponseEntity<Optional<Enrollment>> getEnrollmentById(@PathVariable Long enrollmentId) {
+        Optional<Enrollment> enrollment = enrollmentService.getEnrollmentById(enrollmentId);
+
+        if(enrollment.isEmpty()) {
+            return new ResponseEntity<>(enrollment, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(enrollment, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/dropCourse")
-    public boolean dropCourse(@RequestBody CreateEnrollmentDto courseEnrollmentDTO){
-        return enrollmentService.dropCourse(courseEnrollmentDTO);
-    }
+//    @PostMapping("")
+//    public ResponseEntity<Optional<Enrollment>> saveEnrollment(CreateEnrollmentDto enrollmentInfo) {
+//        Optional<Enrollment> savedEnrollment = enrollmentService.saveEnrollment(enrollmentInfo);
+//
+//        if(savedEnrollment.isEmpty()) {
+//            return new ResponseEntity<>(savedEnrollment, HttpStatus.BAD_REQUEST);
+//        }
+//        return new ResponseEntity<>(savedEnrollment, HttpStatus.CREATED);
+//    }
 
 }

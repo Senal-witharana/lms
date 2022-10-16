@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -19,8 +16,13 @@ import java.util.Date;
 public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int studentId;
-    private String courseCode;
-    private String courseName;
-    private String courseDescription;
+    private Long enrollmentId;
+    private Date enrollmentDate;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private AppUser student;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Course course;
+
 }

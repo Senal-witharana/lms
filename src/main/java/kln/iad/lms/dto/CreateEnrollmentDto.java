@@ -10,6 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateEnrollmentDto {
-    private long enrollmentId;
+    private Long enrollmentId;
     private Date enrollmentDate;
+    private String courseId;
 }

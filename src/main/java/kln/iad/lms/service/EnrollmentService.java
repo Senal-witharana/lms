@@ -1,13 +1,16 @@
 package kln.iad.lms.service;
 
 import kln.iad.lms.dto.CreateEnrollmentDto;
+import kln.iad.lms.dto.ResponseHeader;
+import kln.iad.lms.entity.Enrollment;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EnrollmentService {
-    CreateEnrollmentDto saveStudentEnrolledCourse(CreateEnrollmentDto createEnrollmentDto);
+    Iterable<Enrollment> getAllEnrollments();
 
-    List<CreateEnrollmentDto> getEnrolledCourses();
+    Optional<Enrollment> getEnrollmentById(final Long enrollmentId);
 
-    boolean dropCourse(CreateEnrollmentDto createEnrollmentDto);
+    ResponseHeader saveEnrollment(final CreateEnrollmentDto enrollmentInfo);
 }

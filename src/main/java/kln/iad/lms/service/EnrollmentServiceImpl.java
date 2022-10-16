@@ -1,6 +1,9 @@
 package kln.iad.lms.service;
 
 import kln.iad.lms.dto.CreateEnrollmentDto;
+import kln.iad.lms.dto.ResponseHeader;
+import kln.iad.lms.entity.AppUser;
+import kln.iad.lms.entity.Course;
 import kln.iad.lms.entity.Enrollment;
 import kln.iad.lms.repository.EnrollmentRepo;
 import org.modelmapper.ModelMapper;
@@ -9,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EnrollmentServiceImpl implements EnrollmentService {
     @Autowired
@@ -17,22 +22,43 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @Autowired
     private ModelMapper modelMapper;
 
+
+    @Autowired
+    private CourseService courseService;
+
     @Override
-    public CreateEnrollmentDto saveStudentEnrolledCourse(CreateEnrollmentDto createEnrollmentDto) {
-        enrollmentRepo.save(modelMapper.map(createEnrollmentDto, Enrollment.class));
-        return createEnrollmentDto;
+    public Iterable<Enrollment> getAllEnrollments() {
+        return enrollmentRepo.findAll();
     }
 
     @Override
-    public List<CreateEnrollmentDto> getEnrolledCourses(){
-        List<Enrollment>courseList= enrollmentRepo.findAll();
-        return modelMapper.map(courseList, new TypeToken<List<CreateEnrollmentDto>>(){}.getType());
+    public Optional<Enrollment> getEnrollmentById(Long enrollmentId) {
+        return enrollmentRepo.findById(enrollmentId);
     }
 
     @Override
-    public boolean dropCourse(CreateEnrollmentDto createEnrollmentDto) {
-        enrollmentRepo.delete(modelMapper.map(createEnrollmentDto, Enrollment.class));
-        return true;
+    public ResponseHeader saveEnrollment(CreateEnrollmentDto createEnrollmentDto) {
+        ResponseHeader responseHeader = new ResponseHeader();
+//        String code;
+//        String description;
+//        if(courseRepo.existsById(createCourseDto.getCourseId())){
+//            code="01";
+//            description="Already Exist";
+//        }
+//
+//        else {
+//            Course course = new ModelMapper().map(createCourseDto, Course.class);
+//
+//            courseRepo.save(course);
+//            code="00";
+//            description="SUCCESS";
+//        }
+//
+//        responseHeader.setResponseCode(code);
+//        responseHeader.setResponseDesc(description);
+//
+        return responseHeader;
+
     }
 }
 

@@ -23,6 +23,11 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public Optional<Course> getCourseById(String code) {
+        return courseRepo.findById(code);
+    }
+
+    @Override
     public ResponseHeader  updateCourse(CreateCourseDto createCourseDto) {
 
         Optional<Course> searchedCourse = courseRepo.findById(createCourseDto.getCourseId());
